@@ -1,0 +1,488 @@
+$minwidth: 320px;
+$mw: 1024;
+$md1: $mw + 12;
+$md2: 991.98;
+$md3: 767.98;
+$md4: 479.98;
+
+//==================================
+
+@media (max-width: 1300px) {
+   .mainblock {
+      &__content {
+         .user-info {
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+         }
+      }
+   }
+}
+
+@media (max-width: 1220px) {
+   .wrapper {
+      .man-image {
+         bottom: -3%;
+         right: 0;
+      }
+
+      .woman-image {
+         left: -15%;
+      }
+
+      .fog-image {
+         left: -20%;
+         bottom: -20%;
+      }
+
+      .container h1 {
+         margin: 100px auto 180px;
+      }
+   }
+}
+
+@media (max-width: 1070px) {
+   .mainblock {
+      &__header {
+         font-size: 24px;
+      }
+   }
+}
+
+@media (max-width: $md1+px) {
+   .mainblock {
+
+      .sidebar {
+         width: 66px;
+         padding: 5px;
+
+         nav {
+            margin: 0px 0px 0px 0px;
+         }
+
+         &__logo {
+            margin: 0px 0px 30px 0px;
+
+            img {
+               display: none;
+            }
+         }
+
+         &__link {
+            padding: 10px;
+
+            span {
+               display: none;
+            }
+         }
+
+         .btn-logout {
+
+            span {
+               display: none;
+            }
+         }
+      }
+
+      &__body {
+         margin: 0px 0px 0px 66px;
+      }
+   }
+}
+
+@media (max-width: $md2+px) {
+   .mainblock {
+      &__header {
+         font-size: 24px;
+         text-align: left;
+      }
+   }
+}
+
+@media (max-width: 805px) {
+   .mainblock {
+      &__header {
+         font-size: 22px;
+
+         h1 {
+            max-width: 500px;
+         }
+      }
+
+      &__content {
+         h2 {
+            font-size: 25px;
+            margin-bottom: 30px;
+         }
+
+         .user-info {
+            grid-template-columns: repeat(1, 1fr);
+            grid-template-rows: repeat(6, 1fr);
+         }
+
+         .training-content {
+            .training-buttons {
+               width: 200px;
+            }
+
+            .training-block {
+               grid-template-columns: 1fr 1fr;
+               column-gap: 10px;
+
+               .exercise {
+                  width: 100%;
+                  flex-direction: column;
+
+                  &__ready-btn {
+                     margin-bottom: 5px;
+                  }
+               }
+            }
+         }
+      }
+   }
+}
+
+@media (max-width: $md3+px) {
+   .mainblock {
+      &__content {
+         .diet-content {
+            .products-table {
+               thead {
+                  font-size: 12px;
+                  height: 55px;
+
+                  th {
+                     padding: 5px;
+                  }
+               }
+
+               &__body {
+                  font-size: 10px;
+               }
+
+               &__row {
+                  td {
+                     padding: 5px;
+                  }
+               }
+
+               &__name {
+                  font-size: 10px;
+               }
+            }
+         }
+
+         .exercises-content {
+            .exercises-body {
+               .exercise-body {
+                  .exercise-block {
+                     .exercise-content {
+                        flex-direction: column;
+                     }
+                  }
+               }
+            }
+         }
+
+         .progress-content {
+            .tab-buttons {
+               .tab-button {
+                  margin-bottom: 10px;
+
+                  font-size: 14px;
+               }
+            }
+
+            .charts {
+               overflow-x: scroll;
+
+               .chart {
+                  width: 600px;
+                  height: 100%;
+
+                  canvas {
+                     width: 600px;
+                  }
+
+                  &.active {
+                     transform: scale(1);
+                  }
+               }
+            }
+         }
+      }
+   }
+}
+
+@media (max-width: 600px) {
+   .wrapper {
+      .fog-image {
+         width: 300%;
+         left: -70%;
+         bottom: -10%;
+      }
+
+      .man-image {
+         display: none;
+      }
+
+      .woman-image {
+         display: none;
+      }
+
+      .container h1 {
+         margin: 50px auto 180px;
+      }
+   }
+
+   .start-container {
+      h1 {
+         font-size: 50px;
+      }
+
+      .modal-container {
+         align-items: end;
+
+         .modal {
+            width: 90%;
+
+            &__footer {
+               font-size: 15px;
+
+               span {
+                  padding-left: 15px;
+               }
+            }
+
+            &__form {
+               padding: 30px 0px;
+
+               .input-label {
+                  font-size: 16px;
+                  margin-bottom: 2px;
+               }
+
+               .form-error {
+                  margin-top: 10px;
+                  font-size: 12px;
+               }
+            }
+
+            &__email,
+            &__password {
+               padding: 10px;
+               margin-bottom: 10px;
+
+               font-size: 16px;
+            }
+
+            .modal-header {
+               padding-top: 10px;
+               font-size: 25px;
+            }
+
+            .successful-registration-block {
+               font-size: 30px;
+
+               p {
+                  margin-bottom: 30px;
+               }
+
+               button {
+                  padding: 5px 10px;
+                  font-size: 16px;
+               }
+            }
+         }
+      }
+   }
+
+   .form-submit-login,
+   .form-submit-register {
+      max-width: 320px;
+      padding: 5px 25px;
+
+      font-size: 18px;
+   }
+
+   .mainblock {
+
+      .sidebar {
+         width: 46px;
+
+         &__link {
+            padding: 6px;
+         }
+
+         .btn-logout {
+            padding: 10px;
+
+            svg {
+               width: 100%;
+            }
+         }
+      }
+
+      &__body {
+         margin: 0px 0px 0px 46px;
+      }
+
+      &__header {
+         display: none;
+      }
+
+      &__content {
+         padding: 40px 40px 40px;
+
+         .user-modal-container {
+
+            .user-modal {
+               max-width: 260px;
+               padding: 5px;
+
+               &__form {
+                  label {
+                     font-size: 14px;
+                  }
+               }
+
+               &__name,
+               &__birthday,
+               &__gender,
+               &__weight,
+               &__height,
+               &__medicalInfo,
+               &__goal,
+               &__phone,
+               &__email,
+               &__achievements {
+                  font-size: 14px;
+                  padding: 4px 5px;
+                  margin: 5px 0px;
+               }
+            }
+         }
+
+         .user-info {
+            &__block {
+               h3 {
+                  font-size: 16px;
+               }
+            }
+
+            &__content {
+               font-size: 14px;
+
+               .name-block,
+               .birthday-block,
+               .gender-block,
+               .weight-block,
+               .height-block,
+               .medical-block,
+               .goal-block,
+               .contact-block,
+               .achievements-block {
+                  padding-bottom: 10px;
+               }
+            }
+
+         }
+
+         .training-content {
+            .training-buttons {
+               width: 200px;
+            }
+         }
+
+         .diet-content {
+
+            .products-search {
+               padding: 7px 10px;
+               margin: 0px 0px 10px;
+
+               font-size: 15px;
+            }
+
+            .products-table {
+               overflow-x: scroll;
+            }
+         }
+
+         .exercises-content {
+            .exercises-search {
+               padding: 7px 10px;
+               margin: 0px 0px 10px;
+               font-size: 15px;
+            }
+         }
+      }
+   }
+}
+
+@media (max-width: $md4+px) {
+   .wrapper {
+
+      .container h1 {
+         font-size: 50px;
+      }
+
+      .btn-start {
+         padding: 10px 25px;
+      }
+   }
+
+   .mainblock {
+
+      &__header {
+         font-size: 20px;
+      }
+
+      &__content {
+         padding: 20px;
+
+         h2 {
+            font-size: 20px;
+            margin-bottom: 20px;
+         }
+
+         .user-info {
+
+            &__block {
+               padding: 10px;
+            }
+         }
+
+         .training-content {
+
+            .training-block {
+               grid-template-columns: 1fr;
+               column-gap: 0px;
+            }
+         }
+
+         .exercises-content {
+            .exercises-body {
+               .exercise-body {
+                  .exercise-block {
+                     padding: 5px;
+
+                     .exercise-content {}
+
+                     &__title {
+                        font-size: 18px;
+                        margin: 0px 0px 10px;
+                     }
+
+                     &__instructions {
+                        padding: 0px 10px;
+                        font-size: 14px;
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+}
+
+@media (max-width: 375px) {}

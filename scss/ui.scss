@@ -1,0 +1,117 @@
+.btn-start {
+   position: relative;
+   display: flex;
+   max-width: 320px;
+   padding: 10px 45px;
+   margin: 0 auto;
+
+   font-family: 'Play';
+   font-size: 40px;
+   color: white;
+
+   background: #e18215;
+
+   transition: all 1s ease 0s;
+   box-shadow: 6px 6px 0 black;
+
+   &:focus {
+      outline: none;
+   }
+
+   &:hover {
+      transition: all 0.5s ease 0s;
+      box-shadow: 10px 10px 0 #ffffff;
+   }
+
+   span:nth-child(2) {
+      transition: all 0.5s ease 0s;
+      margin-right: 0px;
+   }
+
+   &:hover span:nth-child(2) {
+      transition: all 0.5s ease 0s;
+      margin-right: 45px;
+   }
+
+   span {
+      text-transform: uppercase;
+
+      &:nth-child(2) {
+         width: 20px;
+         margin-left: 30px;
+         position: relative;
+         top: 12%;
+      }
+
+   }
+
+   path.one {
+      transition: all 0.4s ease 0s;
+      transform: translateX(-60%);
+   }
+
+   path.two {
+      transition: all 0.5s ease 0s;
+      transform: translateX(-30%);
+   }
+
+   &:hover path.three {
+      animation: color_anim 1s infinite 0.2s;
+   }
+
+   &:hover path.one {
+      transform: translateX(0%);
+      animation: color_anim 1s infinite 0.6s;
+   }
+
+   &:hover path.two {
+      transform: translateX(0%);
+      animation: color_anim 1s infinite 0.4s;
+   }
+}
+
+.form-submit-login,
+.form-submit-register {
+   display: flex;
+   max-width: 320px;
+   padding: 10px 45px;
+   margin: 0 auto;
+
+   font-size: 25px;
+   color: white;
+
+   background: #e18215;
+
+   border-radius: 8px;
+   transition: all 1s ease 0s;
+   box-shadow: 4px 4px 0 black;
+   cursor: pointer;
+
+   &:hover {
+      transition: all 0.5s ease 0s;
+      box-shadow: 5px 5px 0 #ffffff;
+   }
+}
+
+.form-submit-login:disabled,
+.form-submit-register:disabled {
+   background: none;
+}
+
+.hide {
+   display: none;
+}
+
+@keyframes color_anim {
+   0% {
+      fill: white;
+   }
+
+   50% {
+      fill: #FBC638;
+   }
+
+   100% {
+      fill: white;
+   }
+}

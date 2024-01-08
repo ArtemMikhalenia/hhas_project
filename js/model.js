@@ -35,9 +35,9 @@ function Model() {
    }
 
    //<ПАРАЛЛАКС>==========================================================================
-   this.parallaxEffect = function () {
-      myView.parallaxEffect();
-   }
+  //  this.parallaxEffect = function () {
+  //     myView.parallaxEffect();
+  //  }
 
    //<МОДАЛЬНОЕ ОКНО ГЛАВНОГО ЭКРАНА>===============================================
 
@@ -140,17 +140,8 @@ function Model() {
          });
    }
 
-   this.logInUser = function (email, password) {
-      signInWithEmailAndPassword(auth, email, password)
-         .then((userCredential) => {
-            const user = userCredential.user;
-
-            myView.successfulLogIn();
-         })
-         .catch((error) => {
-            const errorCode = error.code;
-            myView.ifError(errorCode);
-         });
+   this.startEditing = function () {
+    myView.startEditing();
    }
 
    this.logOutUser = function () {

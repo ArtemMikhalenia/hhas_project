@@ -1,78 +1,126 @@
-//import
-import View from './view.js';
-import Model from './model.js';
-import Controller from './controller.js';
+import { Page } from "./pages.js";
+import { createKeyboard, pressKeyOnKeyboard } from "./keyboard.js";
+import { createWords, getRandomIndex } from "./words.js";
 
-import { StartHeader, StartMainTitle, ButtonStart, StartModal, StartModalOverlay, ParallaxImages, LoginBtn, SidebarMain, ContentMain, SidebarTraining, ContentTraining, SidebarDiet, ContentDiet, SidebarExercisesDatabase, ContentExercisesDatabase, SidebarProgress, ContentProgress } from './components.js';
+const myHangman = (function () {
+	return {
+		init: function () {
+			document.body.innerHTML = Page.render();
+		},
+	};
+})();
 
-import {
-   StartPage, MainPage, TrainingPage, DietPage,
-   ExercisesDatabasePage, ProgressPage
-} from './pages.js';
+document.addEventListener("DOMContentLoaded", myHangman.init());
+createKeyboard();
+getRandomIndex();
+createWords();
 
-// Список компонент (from components.js)
-const components = {
-   startHeader: StartHeader,
-   mainTitle: StartMainTitle,
-   buttonStart: ButtonStart,
-   modal: StartModal,
-   overlay: StartModalOverlay,
-   parallaxImages: ParallaxImages,
+const modal = document.querySelector(".modal");
+const restartBtn = document.querySelector(".restart-btn");
+const virtualKeyboard = document.querySelector(".keyboard");
 
-   loginBtn: LoginBtn,
-   sidebarMain: SidebarMain,
-   contentMain: ContentMain,
-   sidebarTraining: SidebarTraining,
-   contentTraining: ContentTraining,
-   sidebarDiet: SidebarDiet,
-   contentDiet: ContentDiet,
-   sidebarExercisesDatabase: SidebarExercisesDatabase,
-   contentExercisesDatabase: ContentExercisesDatabase,
-   sidebarProgress: SidebarProgress,
-   contentProgress: ContentProgress,
-};
+const manHead = document.querySelector(".man-head");
+const manBody = document.querySelector(".man-body");
+const manLeftHand = document.querySelector(".man-left-hand");
+const manRightHand = document.querySelector(".man-right-hand");
+const manLeftFoot = document.querySelector(".man-left-foot");
+const manRightFoot = document.querySelector(".man-right-foot");
 
-// Список поддерживаемых роутов (from pages.js)
-const routes = {
-   startpage: StartPage,
-   mainpage: MainPage,
-   trainingpage: TrainingPage,
-   dietpage: DietPage,
-   excersisesdatabase: ExercisesDatabasePage,
-   progresspage: ProgressPage,
+restartBtn.addEventListener("click", restartGame);
+document.addEventListener("keydown", pressKeyOnKeyboard);
+virtualKeyboard.addEventListener("click", pressKey);
 
-   default: StartPage,
-};
+function pressKey(event) {
+	const letters = document.querySelectorAll(".letter");
+	let flag = true;
+	let button = event.target.closest(".btn");
 
-//инициализируем СПА
-const mySPA = (function () {
-   return {
-      init: function ({ container, routes, components }) {
-         this.renderComponents(container, components);
+	letters.forEach((element) => {
+		if (event.target.textContent === element.getAttribute("data-letter")) {
+			element.classList.add("active");
+			counter(false);
+			flag = false;
+		}
+	});
 
-         const myView = new View();
-         const myModel = new Model();
-         const myController = new Controller();
+	if (button !== virtualKeyboard && virtualKeyboard.contains(button)) {
+		button && button.classList.add("active");
+		button && button.setAttribute("disabled", "disabled");
 
-         //связываем части модуля
-         myView.init(document.getElementById(container), routes);
-         myModel.init(myView);
-         myController.init(document.getElementById(container), myModel);
-      },
+		flag ? counter(true) : (flag = true);
 
-      renderComponents: function (container, components) {
-         const root = document.getElementById(container);
-         const componentsList = Object.keys(components);
-         for (let item of componentsList) {
-            root.innerHTML += components[item].render("component");
-         }
-      },
-   };
-}());
+		checkIfActive();
+	}
+}
 
-document.addEventListener("DOMContentLoaded", mySPA.init({
-   container: "wrapper",
-   routes: routes,
-   components: components,
-}))
+function counter(value) {
+	if (value === false) {
+		return;
+	} else {
+		const triesBlock = document.querySelector(".tries");
+		triesBlock.textContent++;
 
+		switch (triesBlock.textContent) {
+			case "1":
+				manHead.classList.add("active");
+				break;
+			case "2":
+				manBody.classList.add("active");
+				break;
+			case "3":
+				manLeftHand.classList.add("active");
+				break;
+			case "4":
+				manRightHand.classList.add("active");
+				break;
+			case "5":
+				manLeftFoot.classList.add("active");
+				break;
+			case "6":
+				manRightFoot.classList.add("active");
+				break;
+			default:
+				break;
+		}
+
+		if (triesBlock.textContent === "6") {
+			document.querySelector(".result-message").innerHTML =
+				"You are dead <br> &#128546;";
+			modal.classList.remove("hidden");
+			document.removeEventListener("keydown", pressKeyOnKeyboard);
+		}
+	}
+}
+
+function restartGame() {
+	manHead.classList.remove("active");
+	manBody.classList.remove("active");
+	manLeftHand.classList.remove("active");
+	manRightHand.classList.remove("active");
+	manLeftFoot.classList.remove("active");
+	manRightFoot.classList.remove("active");
+
+	modal.classList.add("hidden");
+
+	document.querySelector(".word-block").innerHTML = "";
+	document.querySelector(".tries").innerHTML = "0";
+	document.querySelector(".keyboard").innerHTML = "";
+	createKeyboard();
+	createWords();
+	document.addEventListener("keydown", pressKeyOnKeyboard);
+}
+
+function checkIfActive() {
+	const wordBlock = document.querySelector(".word-block");
+	const length = wordBlock.children.length;
+	const letters = wordBlock.querySelectorAll(".active");
+
+	if (letters.length === length) {
+		modal.classList.remove("hidden");
+		document.querySelector(".result-message").innerHTML =
+			"You are alive <br> &#129395;";
+		document.removeEventListener("keydown", pressKeyOnKeyboard);
+	}
+}
+
+export { counter, checkIfActive, restartGame };

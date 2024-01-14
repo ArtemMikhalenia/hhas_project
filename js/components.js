@@ -41,4 +41,16 @@ const TotalBlock = {
 	},
 };
 
-export { MainTitle, AddBlock, ListBlock, TotalBlock };
+const ListItem = {
+	render: (name, sum) => {
+		return `<li class="list-item">
+    <span class="list-item-value">+<span class="list-item-sum">${sum}</span> руб. - ${name}</span>
+    <span class="buttons-block">
+      <button class="edit-btn">&#128397</button>
+      <button class="delete-btn">&#10060;</button>
+    </span>
+  </li>`;
+	},
+};
+
+export { MainTitle, AddBlock, ListBlock, TotalBlock, ListItem };

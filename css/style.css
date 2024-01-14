@@ -108,6 +108,7 @@ body {
   text-decoration: none;
   color: white;
   background-color: rgb(233, 30, 99);
+  cursor: pointer;
 }
 .main-container .copy-btn {
   max-width: 100%;
@@ -119,4 +120,5 @@ body {
   text-decoration: none;
   color: white;
   background-color: rgb(63, 81, 181);
+  cursor: pointer;
 }/*# sourceMappingURL=style.css.map */

@@ -1,4 +1,29 @@
 import { Page } from "./pages.js";
+import {
+	getDatabase,
+	ref,
+	set,
+	update,
+	get,
+	child,
+	push,
+	remove,
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+
+const firebaseConfig = {
+	apiKey: "AIzaSyDyv6oM0hJWbQ82ofxEqEd0Tta5VMUy8wE",
+	authDomain: "hhasproject.firebaseapp.com",
+	databaseURL:
+		"https://hhasproject-default-rtdb.europe-west1.firebasedatabase.app",
+	projectId: "hhasproject",
+	storageBucket: "hhasproject.appspot.com",
+	messagingSenderId: "693171081016",
+	appId: "1:693171081016:web:b91b463d5491c540463bcd",
+};
+
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
 
 const wrapper = document.querySelector(".wrapper");
 
@@ -18,7 +43,7 @@ const nameInput = document.querySelector(".add-input-name");
 const sumInput = document.querySelector(".add-input-sum");
 const clearListBtn = document.querySelector(".clear-btn");
 
-addButton.addEventListener("click", addListItem);
+addButton.addEventListener("click", addData);
 clearListBtn.addEventListener("click", clearList);
 
 function addListItem() {
@@ -44,9 +69,21 @@ function addListItem() {
 	nameInput.value = "";
 }
 
+// function getInfo() {
+// 	return nameInput.value, sumInput.value;
+// }
+
+function addData() {
+	set(ref(database, "List/" + nameInput.value), {
+		name: nameInput.value,
+		sum: sumInput.value,
+	});
+}
+
 function clearList() {
 	list.innerHTML = "";
 	document.querySelector(".total-sum").textContent = 0;
+	set(child(ref(database), "List/"), "");
 }
 
 function countTotalSum() {
@@ -56,8 +93,4 @@ function countTotalSum() {
 		array.push(Number(el.textContent));
 	});
 	return array.reduce((sum, el) => (sum += el), 0);
-}
-
-function getNameValue() {
-	console.log(nameInput.value);
 }

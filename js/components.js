@@ -1,80 +1,44 @@
-// const MainTitle = {
-// 	render: () => {
-// 		return `
-//     <h1 class="main-title"><span class="title-blue">The</span> Hangman</h1>
-//     `;
-// 	},
-// };
+const MainTitle = {
+	render: () => {
+		return `
+    <h1 class="main-title">Помощь бездомным животным Солигорска</h1>
+    `;
+	},
+};
 
-// const GallowsBlock = {
-// 	render: () => {
-// 		return `
-//     <div class="gallows-block">
-//       <img class="gallows" src="./images/gallows/gallows.svg" alt="gallows">
-//       <img class="man-head" src="./images/man/head.svg" alt="head">
-//       <img class="man-right-hand" src="./images/man/right-hand.svg" alt="right-hand">
-//       <img class="man-body" src="./images/man/body.svg" alt="body">
-//       <img class="man-left-hand" src="./images/man/left-hand.svg" alt="left-hand">
-//       <img class="man-right-foot" src="./images/man/right-foot.svg" alt="right-foot">
-//       <img class="man-left-foot" src="./images/man/left-foot.svg" alt="left-foot">
-//     </div>
-// 	`;
-// 	},
-// };
+const AddBlock = {
+	render: () => {
+		return `
+    <form class="add-block">
+        <label class="label" for="add-input-name">Имя</label>
+        <input type="text" class="add-input-name" id="add-input-name" required>
+        <label class="label" for="add-input-sum">Сумма</label>
+        <input type="number" class="add-input-sum" id="add-input-sum" required>
+        <button type="button" class="add-button">Добавить</button>
+    </form>
+	`;
+	},
+};
 
-// const WordBlock = {
-// 	render: () => {
-// 		return `
-//     <div class="word-block">
-//     </div>
-// 	`;
-// 	},
-// };
+const ListBlock = {
+	render: () => {
+		return `
+    <section class="list-block">
+        <ul class="list">
+        </ul>
+    </section>
+	`;
+	},
+};
 
-// const HintBlock = {
-// 	render: () => {
-// 		return `
-//     <div class="hint-block"></div>
-// 	`;
-// 	},
-// };
+const TotalBlock = {
+	render: () => {
+		return `
+    <div class="total">Итого: <span class="total-sum">0</span> руб.</div>
+      <button class="copy-btn">Скопировать все данные</button>
+      <button class="clear-btn">Очистить список</button>
+	`;
+	},
+};
 
-// const GuessesBlock = {
-// 	render: () => {
-// 		return `
-//     <div class="guesses-block">Incorrect guesses: <span class="tries">0</span> / 6</div>
-// 	`;
-// 	},
-// };
-
-// const Keyboard = {
-// 	render: () => {
-// 		return `
-//   <div class="keyboard"></div>
-// 	`;
-// 	},
-// };
-
-// const Modal = {
-// 	render: () => {
-// 		return `
-//       <div class="modal hidden">
-//         <div class="modal-body">
-//           <p class="result-message"></p>
-//           <p class="secret-word"></p>
-//           <button class="restart-btn">Play again</button>
-//         </div>
-//       </div>
-// 	`;
-// 	},
-// };
-
-// export {
-// 	MainTitle,
-// 	GallowsBlock,
-// 	WordBlock,
-// 	HintBlock,
-// 	GuessesBlock,
-// 	Keyboard,
-// 	Modal,
-// };
+export { MainTitle, AddBlock, ListBlock, TotalBlock };

@@ -1,30 +1,15 @@
-// import {
-// 	MainTitle,
-// 	GallowsBlock,
-// 	WordBlock,
-// 	HintBlock,
-// 	GuessesBlock,
-// 	Keyboard,
-// 	Modal,
-// } from "./components.js";
+import { MainTitle, AddBlock, ListBlock, TotalBlock } from "./components.js";
 
-// const Page = {
-// 	render: () => {
-// 		return `<section class="main-container">
-//     ${MainTitle.render()}
-//     <div class="content">
-//       ${GallowsBlock.render()}
-//       <div class=" game-block">
-//         ${WordBlock.render()}
-//         ${HintBlock.render()}
-//         ${GuessesBlock.render()}
-//         ${Keyboard.render()}
-//       </div>
-//     </div>
-//     </section>
-//     ${Modal.render()}
-//     `;
-// 	},
-// };
+const Page = {
+	render: () => {
+		return `<main class="main-container">
+              ${MainTitle.render()}
+              ${AddBlock.render()}
+              ${ListBlock.render()}
+              ${TotalBlock.render()}
+            </main>
+    `;
+	},
+};
 
-// export { Page };
+export { Page };

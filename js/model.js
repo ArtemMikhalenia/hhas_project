@@ -36,17 +36,16 @@ function Model() {
 	};
 
 	this.addListItem = function (name, sum) {
-		// set(ref(database, "List/" + name), {
-		// 	name: name,
-		// 	sum: sum,
-		// });
-
 		const list = {
 			name: name,
 			sum: sum,
 		};
 		const newKey = push(child(ref(database), `List/`), list).key;
 		myView.addListItem(name, sum, newKey);
+	};
+
+	this.copyListItem = function () {
+		myView.copyListItem();
 	};
 
 	this.clearList = function () {
@@ -62,8 +61,16 @@ function Model() {
 		}
 	};
 
-  this.countTotalSum = function () {
+	this.countTotalSum = function () {
 		myView.countTotalSum();
+	};
+
+	this.removeListItem = function (event) {
+		let targetEl = event.target.closest(".list-item");
+		let targetKey = targetEl.getAttribute("data-key");
+
+		remove(child(ref(database), `List/${targetKey}`));
+		myView.removeListItem(event);
 	};
 }
 

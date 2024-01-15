@@ -36,16 +36,34 @@ function Model() {
 	};
 
 	this.addListItem = function (name, sum) {
-		set(ref(database, "List/" + name), {
+		// set(ref(database, "List/" + name), {
+		// 	name: name,
+		// 	sum: sum,
+		// });
+
+		const list = {
 			name: name,
 			sum: sum,
-		});
-		myView.addListItem(name, sum);
+		};
+		const newKey = push(child(ref(database), `List/`), list).key;
+		myView.addListItem(name, sum, newKey);
 	};
 
 	this.clearList = function () {
 		set(child(ref(database), "List/"), "");
 		myView.clearList();
+	};
+
+	this.loadListItems = async function () {
+		const snapshot = await get(child(ref(database), "List"));
+		if (snapshot.exists()) {
+			const listItem = snapshot.val();
+			myView.renderListItems(listItem);
+		}
+	};
+
+  this.countTotalSum = function () {
+		myView.countTotalSum();
 	};
 }
 

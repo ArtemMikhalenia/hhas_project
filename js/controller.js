@@ -5,8 +5,8 @@ function Controller() {
 	function updateState() {
 		const hashPageName = location.hash.slice(1).toLowerCase();
 		myModel.updateState(hashPageName);
-		// myModel.manageUser();
-		// myModel.loadExercises();
+		myModel.loadListItems();
+		myModel.countTotalSum();
 		// myModel.loadProducts();
 		// myModel.loadOptions();
 		// myModel.loadExercise();

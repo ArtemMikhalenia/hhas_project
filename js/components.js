@@ -42,8 +42,8 @@ const TotalBlock = {
 };
 
 const ListItem = {
-	render: (name, sum) => {
-		return `<li class="list-item">
+	render: (name, sum, key) => {
+		return `<li class="list-item" data-key="${key}">
     <span class="list-item-value">+<span class="list-item-sum">${sum}</span> руб. - ${name}</span>
     <span class="buttons-block">
       <button class="edit-btn">&#128397</button>

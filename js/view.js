@@ -48,8 +48,12 @@ function View() {
 		let text = array.join("\n");
 		navigator.clipboard
 			.writeText(text)
-			.then(() => console.log("Текст скопирован в буфер обмена."))
-			.catch((err) => console.log("Не удалось скопировать текст: ", err));
+			.then(() => {
+				console.log("Текст успешно скопирован в буфер обмена");
+			})
+			.catch((error) => {
+				console.error("Не удалось скопировать текст: ", error);
+			});
 	};
 
 	this.removeListItem = function (event) {

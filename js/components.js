@@ -1,7 +1,7 @@
 const MainTitle = {
 	render: () => {
 		return `
-    <img class="logo animate__animated animate__zoomIn" src="../images/Logo.png" alt="Logo">
+    <img class="logo animate__animated animate__zoomIn" src="./images/Logo.png" alt="Logo">
     <h1 class="main-title animate__animated animate__slideInDown">Помощь бездомным животным Солигорска</h1>
     `;
 	},

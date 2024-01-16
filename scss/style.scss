@@ -17,17 +17,25 @@ body {
 	margin: 0 auto;
 }
 
+.logo {
+	display: block;
+	max-width: 100px;
+	width: 100%;
+	margin: 0 auto;
+}
+
 .main-container {
-	padding: 0px 10px;
+	padding: 10px;
 
 	.main-title {
 		margin: 0px 0px 20px;
-		font-size: 25px;
-		font-weight: 500;
-		line-height: 140%;
+		font-size: 30px;
+		font-weight: 700;
+		line-height: 120%;
 
 		text-align: center;
-		color: #000;
+		color: #ff6933;
+		text-shadow: 1px 1px #000;
 	}
 
 	.add-block {
@@ -42,6 +50,7 @@ body {
 
 		.add-input-name,
 		.add-input-sum {
+			outline: none;
 			margin-bottom: 10px;
 			width: calc(100% - 10px);
 			padding: 5px 5px;
@@ -52,10 +61,16 @@ body {
 
 			border-radius: 10px;
 			border: none;
-			box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.06);
+			box-shadow: 4px 4px 10px #0000000f;
+
+			&:focus {
+				box-shadow: 4px 4px 5px #b7ce63;
+			}
 		}
 
 		.add-button {
+			position: relative;
+			top: 0;
 			padding: 10px 0px;
 			margin-bottom: 10px;
 
@@ -63,15 +78,19 @@ body {
 			border-radius: 10px;
 			text-decoration: none;
 			color: white;
-			background: rgb(63, 81, 181);
+			background: #3d5a80;
 			cursor: pointer;
 
-			// &.click {
-			// 	background: #003cc5;
-			// 	box-shadow: none;
-			// 	position: relative;
-			// 	top: 5px;
-			// }
+			transition: all 0.1s ease 0s;
+
+			&:active {
+				top: 4px;
+				box-shadow: 0 4px 0px #293241;
+			}
+
+			&:disabled {
+				background: rgb(165, 163, 163);
+			}
 		}
 	}
 
@@ -100,15 +119,18 @@ body {
 				.list-item-value {
 					margin-right: 10px;
 				}
-
-				.edit-btn {
-					margin-right: 3px;
-					border: 1px solid rgb(63, 81, 181);
-					border-radius: 10px;
-				}
 				.delete-btn {
-					border: 1px solid rgb(233, 30, 99);
+					max-width: 100%;
+					width: 100%;
+					padding: 5px;
+
+					font-size: 16px;
+
+					border: none;
 					border-radius: 10px;
+					color: rgb(255, 255, 255);
+					background-color: #ff6933;
+					cursor: pointer;
 				}
 			}
 		}
@@ -124,6 +146,8 @@ body {
 		line-height: 160%;
 	}
 	.clear-btn {
+		position: relative;
+		top: 0;
 		max-width: 100%;
 		width: 100%;
 		padding: 10px 0px;
@@ -132,11 +156,20 @@ body {
 		border-radius: 10px;
 		text-decoration: none;
 		color: white;
-		background-color: rgb(233, 30, 99);
+		background-color: #ff6933;
 		cursor: pointer;
+
+		transition: all 0.1s ease 0s;
+
+		&:active {
+			top: 4px;
+			box-shadow: 0 4px 0px #b44b24;
+		}
 	}
 
 	.copy-btn {
+		position: relative;
+		top: 0;
 		max-width: 100%;
 		width: 100%;
 		padding: 10px 0px;
@@ -146,7 +179,14 @@ body {
 		border-radius: 10px;
 		text-decoration: none;
 		color: white;
-		background-color: rgb(63, 81, 181);
+		background: #3d5a80;
 		cursor: pointer;
+
+		transition: all 0.1s ease 0s;
+
+		&:active {
+			top: 4px;
+			box-shadow: 0 4px 0px #293241;
+		}
 	}
 }

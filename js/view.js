@@ -34,6 +34,8 @@ function View() {
 	this.addListItem = function (name, sum, key) {
 		if (listBlock) listBlock.innerHTML += ListItem.render(name, sum, key);
 		this.countTotalSum();
+    this.enableAddBtn();
+
 		document.querySelector(".add-input-name").value = "";
 		document.querySelector(".add-input-sum").value = "";
 	};
@@ -86,6 +88,16 @@ function View() {
 
 		let result = array.reduce((sum, el) => (sum += el), 0);
 		document.querySelector(".total-sum").innerHTML = result;
+	};
+
+	this.enableAddBtn = function (state) {
+		if (state) {
+			document.querySelector(".add-button").removeAttribute("disabled");
+		} else {
+			document
+				.querySelector(".add-button")
+				.setAttribute("disabled", "disabled");
+		}
 	};
 }
 

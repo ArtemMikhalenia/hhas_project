@@ -72,6 +72,11 @@ function Model() {
 		remove(child(ref(database), `List/${targetKey}`));
 		myView.removeListItem(event);
 	};
+
+	this.enableAddBtn = function (state) {
+		state ? true : false;
+		myView.enableAddBtn(state);
+	};
 }
 
 export default Model;

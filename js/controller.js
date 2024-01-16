@@ -7,6 +7,7 @@ function Controller() {
 		myModel.updateState(hashPageName);
 		myModel.loadListItems();
 		myModel.countTotalSum();
+    myModel.enableAddBtn();
 
 		const addButton = document.querySelector(".add-button");
 		const copyList = document.querySelector(".copy-btn");
@@ -22,6 +23,12 @@ function Controller() {
 				removeListItem(event);
 			}
 		});
+
+		const nameInput = document.querySelector(".add-input-name");
+		const sumInput = document.querySelector(".add-input-sum");
+
+		nameInput.addEventListener("input", enableAddBtn);
+		sumInput.addEventListener("input", enableAddBtn);
 	}
 
 	function addListItem() {
@@ -40,6 +47,17 @@ function Controller() {
 
 	function clearList() {
 		myModel.clearList();
+	}
+
+	function enableAddBtn() {
+		const nameInput = document.querySelector(".add-input-name");
+		const sumInput = document.querySelector(".add-input-sum");
+
+		if (nameInput.value && sumInput.value) {
+			myModel.enableAddBtn(true);
+		} else {
+			myModel.enableAddBtn(false);
+		}
 	}
 
 	return {

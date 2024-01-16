@@ -1,13 +1,4 @@
 
-// function countTotalSum() {
-// 	const array = [];
-// 	const sumsArray = document.querySelectorAll(".list-item-sum");
-// 	sumsArray.forEach((el) => {
-// 		array.push(Number(el.textContent));
-// 	});
-// 	return array.reduce((sum, el) => (sum += el), 0);
-// }
-
 import View from "./view.js";
 import Model from "./model.js";
 import Controller from "./controller.js";
